@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 
-app = FastAPI(title="PANDA Barbershop Business API", port=8001)
+app = FastAPI(title="Project Business API", port=8001)
 
 app.add_middleware(
     CORSMiddleware,
@@ -34,9 +34,9 @@ class OrderCreate(BaseModel):
 # ==========================================
 # Endpoints
 # ==========================================
-@app.get("/barbershops/{barbershop_id}/products")
-async def get_products(barbershop_id: str, search: Optional[str] = None):
-    # Business logic: In a real app, we might verify if the barbershop_id exists
+@app.get("/projects/{project_id}/products")
+async def get_products(project_id: str, search: Optional[str] = None):
+    # Business logic: In a real app, we might verify if the project_id exists
     # For now, we simply proxy to the CRUD API
     try:
         async with httpx.AsyncClient() as client:
@@ -49,8 +49,8 @@ async def get_products(barbershop_id: str, search: Optional[str] = None):
     except httpx.HTTPStatusError as exc:
         raise HTTPException(status_code=exc.response.status_code, detail=exc.response.text)
 
-@app.post("/barbershops/{barbershop_id}/orders")
-async def create_order(barbershop_id: str, order: OrderCreate):
+@app.post("/projects/{project_id}/orders")
+async def create_order(project_id: str, order: OrderCreate):
     # Business logic: validate total, check stock, etc.
     # We assume validation passes for this prototype
     if order.total <= 0:

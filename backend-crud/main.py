@@ -4,7 +4,7 @@ from prisma import Prisma
 from pydantic import BaseModel
 from typing import List, Optional
 
-app = FastAPI(title="PANDA Barbershop CRUD API", port=3000)
+app = FastAPI(title="Project CRUD API", port=3000)
 
 app.add_middleware(
     CORSMiddleware,

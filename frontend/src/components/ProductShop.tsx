@@ -22,7 +22,7 @@ export default function ProductShop() {
     setLoading(true);
     setSearched(true);
     try {
-      const data = await request("GET", `/barbershops/bf338534-365a-4d8d-b45d-1e961e182467/products?search=${query}`);
+      const data = await request("GET", `/projects/bf338534-365a-4d8d-b45d-1e961e182467/products?search=${query}`);
       setResults(data);
       setError(null);
     } catch (err: any) {
