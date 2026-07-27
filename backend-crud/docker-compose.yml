@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  crud-api:
+    build:
+      context: .
+    container_name: panda_crud_api
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=mongodb+srv://root123:root123@cluster0.0s6q0vr.mongodb.net/productos?retryWrites=true&w=majority
+    restart: always

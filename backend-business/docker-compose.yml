@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  business-api:
+    build:
+      context: .
+    container_name: panda_business_api
+    ports:
+      - "8001:8001"
+    environment:
+      - CRUD_API_URL=http://panda_crud_api:3000
+    networks:
+      - backend-crud_default
+    restart: always
+
+networks:
+  backend-crud_default:
+    external: true
